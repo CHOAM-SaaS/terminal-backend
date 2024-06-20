@@ -3,11 +3,15 @@ import express, { Request, Response } from 'express';
 import axios from 'axios';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import databaseConnect from './config/database';
 
 dotenv.config();
 
 const app = express();
-const port = process.env.API_PORT || 3050;
+const port = process.env.PORT || 3050;
+
+// Handle Database Connection
+databaseConnect();
 
 app.use(
   bodyParser.json({
